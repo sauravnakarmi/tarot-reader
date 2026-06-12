@@ -1,0 +1,1407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at top, #2c1c52 0%, #0b0816 45%, #05030d 100%);
+
+    overflow-x: hidden;
+
+    color: white;
+
+    font-family: "Inter", sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 20px;
+}
+
+/* ---------- CONTAINER ---------- */
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+
+    text-align: center;
+}
+
+/* ---------- TITLE ---------- */
+
+.title {
+    font-family: "Cinzel", serif;
+
+    font-size: 4rem;
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.15),
+        0 0 30px rgba(180,130,255,.4);
+}
+
+.subtitle {
+    color: rgba(255,255,255,.75);
+
+    margin-bottom: 35px;
+
+    font-size: 1.1rem;
+}
+
+/* ---------- BUTTON ---------- */
+
+button {
+    background:
+        linear-gradient(
+            135deg,
+            #f7d794,
+            #cda6ff
+        );
+
+    color: #111;
+
+    border: none;
+
+    padding: 15px 34px;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.3);
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(175,130,255,.35);
+}
+
+/* ---------- READING LAYOUT ---------- */
+
+#cardContainer {
+
+    margin-top: 70px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    flex-wrap: nowrap;
+
+    gap: 40px;
+}
+
+.reading-card {
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+/* ---------- FLIP CARD ---------- */
+
+.flip-card {
+
+    width: 280px;
+    height: 490px;
+
+    perspective: 1400px;
+
+    cursor: pointer;
+}
+
+.flip-card-inner {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 1s cubic-bezier(.22,.85,.3,1);
+}
+
+.flip-card-inner.flipped {
+
+    transform:
+        rotateY(180deg);
+}
+
+/* ---------- FRONT + BACK ---------- */
+
+.card-front,
+.card-back {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 24px;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+}
+
+/* ---------- BACK ---------- */
+
+.card-back {
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at top, #31215c, #140d28);
+
+    border:
+        2px solid rgba(255,255,255,.08);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.45);
+}
+
+.back-design {
+
+    font-size: 6rem;
+
+    color:
+        rgba(255,255,255,.75);
+
+    text-shadow:
+        0 0 20px rgba(180,130,255,.4);
+
+    animation:
+        pulse 3s ease-in-out infinite;
+}
+
+/* ---------- CARD FRONT ---------- */
+
+.card-front {
+
+    transform:
+        rotateY(180deg);
+}
+
+/* ---------- TILT CARD ---------- */
+
+.tilt-card {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background: #111;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .12s ease;
+
+    will-change: transform;
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.45);
+}
+
+/* ---------- HOVER LIGHT ---------- */
+
+.tilt-card::before {
+
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+
+    background:
+        radial-gradient(
+            circle at var(--x) var(--y),
+            rgba(255,255,255,.12),
+            transparent 30%
+        );
+}
+
+.tilt-card:hover::before {
+    opacity: 1;
+}
+
+/* ---------- BORDER ---------- */
+
+.tilt-card::after {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: 24px;
+
+    border:
+        2px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.08),
+        0 0 20px rgba(193,146,255,.25);
+
+    pointer-events: none;
+}
+
+/* ---------- TAROT CARD ---------- */
+
+.tarot-card {
+
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 900px) {
+
+    #cardContainer {
+
+        grid-template-columns: 1fr;
+    }
+
+    .reading-card {
+
+        grid-column: auto !important;
+    }
+}
+
+/* ---------- IMAGE ---------- */
+
+.tarot-card img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    pointer-events: none;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ---------- PULSE ---------- */
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+}
+
+
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 900px) {
+
+    .title {
+        font-size: 2.8rem;
+    }
+
+    .flip-card {
+        width: 240px;
+        height: 420px;
+    }
+
+    .reading-card {
+        width: 240px;
+    }
+}
+
+/* ---------- REVEAL ---------- */
+
+.legendary-reveal {
+
+    animation:
+        legendaryEntrance 1.2s cubic-bezier(.12,.8,.2,1);
+}
+
+/* ---------- GLOW ---------- */
+
+.legendary-glow {
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180,140,255,.22),
+            transparent 70%
+        );
+
+    mix-blend-mode: screen;
+
+    pointer-events: none;
+}
+
+/* ---------- IRIDESCENT SHINE ---------- */
+
+.legendary-shine {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    opacity: 1;
+
+    transition:
+        opacity .15s ease;
+
+    background:
+
+    radial-gradient(
+        circle at var(--x) var(--y),
+
+        rgba(255,255,255,.18) 0%,
+        rgba(255,255,255,.05) 15%,
+        transparent 35%
+    ),
+
+    radial-gradient(
+    circle at var(--x) var(--y),
+
+    rgba(255,70,170,.45) 0%,
+rgba(70,220,255,.42) 20%,
+rgba(170,90,255,.42) 40%,
+    transparent 45%
+);
+
+    background-size:
+        250px 250px,
+        200% 200%;
+
+    mix-blend-mode: color-burn;
+}
+
+.legendary-shine::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        repeating-linear-gradient(
+            125deg,
+
+            rgba(255,255,255,.025) 0px,
+            rgba(255,255,255,.025) 2px,
+
+            transparent 2px,
+            transparent 8px
+        );
+
+    mix-blend-mode: overlay;
+
+    opacity: .12;
+}
+
+.legendary-card:hover .legendary-shine {
+
+    opacity: 0.6;
+}
+
+
+
+/* ---------- STARS ---------- */
+
+.legendary-stars span {
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    background:
+    radial-gradient(
+    circle at var(--x) var(--y),
+
+    rgba(255,255,255,.25) 0%,
+    rgba(255,255,255,.08) 15%,
+    transparent 35%
+    );
+
+    clip-path:
+        polygon(
+            50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%
+        );
+
+    filter:
+        drop-shadow(0 0 6px rgba(255,240,180,.9))
+        drop-shadow(0 0 12px rgba(255,215,120,.9))
+        drop-shadow(0 0 25px rgba(255,180,50,.6));
+
+    animation:
+        magicalStar 3.5s infinite ease-in-out;
+
+    opacity: 1;
+
+    pointer-events: none;
+}
+
+/* ---------- STAR POSITIONS ---------- */
+
+.legendary-stars span:nth-child(1) {
+    top: 10%;
+    left: 18%;
+}
+
+.legendary-stars span:nth-child(2) {
+    top: 24%;
+    right: 12%;
+    animation-delay: .7s;
+}
+
+.legendary-stars span:nth-child(3) {
+    bottom: 20%;
+    left: 14%;
+    animation-delay: 1.8s;
+}
+
+.legendary-stars span:nth-child(4) {
+    bottom: 12%;
+    right: 18%;
+    animation-delay: 1.2s;
+}
+
+.legendary-stars span:nth-child(5) {
+    top: 50%;
+    left: 52%;
+    animation-delay: .4s;
+}
+
+/* ---------- PURPLE BURST ---------- */
+
+.legendary-burst {
+
+    position: absolute;
+
+    width: 40px;
+    height: 40px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    background:
+        radial-gradient(
+            circle,
+
+            rgba(255,220,255,1) 0%,
+            rgba(220,120,255,1) 18%,
+            rgba(170,70,255,.95) 38%,
+            rgba(110,40,220,.85) 62%,
+            rgba(70,20,160,.45) 82%,
+            transparent 100%
+        );
+
+    mix-blend-mode: screen;
+
+    filter:
+        blur(3px)
+        brightness(1.8);
+
+    animation:
+        legendaryBurst .9s cubic-bezier(.12,.8,.2,1) forwards;
+}
+
+/* ---------- PURPLE RING ---------- */
+
+.legendary-burst::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    border:
+        4px solid rgba(220,140,255,1);
+
+    box-shadow:
+        0 0 18px rgba(180,80,255,1),
+        0 0 40px rgba(140,50,255,.9),
+        0 0 90px rgba(120,40,220,.55);
+
+    animation:
+        burstRing .9s ease-out forwards;
+}
+
+/* ---------- HOVER BOOST ---------- */
+
+.legendary-card:hover {
+
+    box-shadow:
+        0 0 35px rgba(180,140,255,.35),
+        0 0 80px rgba(120,180,255,.2),
+        0 25px 45px rgba(0,0,0,.55);
+}
+
+/* ===================================================== */
+/* ===================== ANIMATIONS ==================== */
+/* ===================================================== */
+
+@keyframes celestialAura {
+
+    0%,100% {
+
+        opacity: .5;
+    }
+
+    50% {
+
+        opacity: 1;
+    }
+}
+
+@keyframes legendaryEntrance {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            perspective(1400px)
+            scale(.4)
+            rotate(-18deg);
+
+        filter:
+            brightness(2.5);
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            perspective(1400px)
+            scale(1.12)
+            rotate(8deg);
+
+        filter:
+            brightness(1.8);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            perspective(1400px)
+            scale(1)
+            rotate(0deg);
+
+        filter:
+            brightness(1);
+    }
+}
+
+
+/* ---------- STARS ---------- */
+
+@keyframes magicalStar {
+
+    0% {
+
+        opacity: .3;
+
+        transform:
+            scale(.4)
+            rotate(0deg);
+
+        filter:
+            brightness(.8);
+    }
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.8)
+            rotate(18deg);
+
+        filter:
+            brightness(1.8);
+    }
+
+    60% {
+
+        opacity: .9;
+
+        transform:
+            scale(.9)
+            rotate(-12deg);
+
+        filter:
+            brightness(1.4);
+    }
+
+    100% {
+
+        opacity: .3;
+
+        transform:
+            scale(.4)
+            rotate(0deg);
+
+        filter:
+            brightness(.8);
+    }
+}
+
+/* ---------- BURST ---------- */
+
+@keyframes legendaryBurst {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.2);
+    }
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(6);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(9);
+    }
+}
+
+/* ---------- RING ---------- */
+
+@keyframes burstRing {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            scale(.3);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(3.5);
+    }
+}
+
+/* ===================================================== */
+/* ================= STAR CARD FRAME =================== */
+/* ===================================================== */
+
+.star-card-frame {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+
+.star-card-frame::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    border-radius: 18px;
+
+    border: 3px solid #f7df8a;
+
+    box-shadow:
+        0 0 10px rgba(255,215,120,.8),
+        0 0 25px rgba(255,215,120,.6),
+        0 0 45px rgba(255,215,120,.35),
+        inset 0 0 15px rgba(255,215,120,.25);
+
+    animation:
+    legendaryBorder 4s ease-in-out infinite;
+    z-index: 8;
+
+    pointer-events: none;
+}
+
+
+.star-card-number {
+
+    position: absolute;
+
+    top: 14px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 15;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 1.3rem;
+
+    letter-spacing: 4px;
+
+    color: #f7df8a;
+
+    text-shadow:
+        0 0 8px rgba(255,215,120,.8);
+}
+
+.star-card-title {
+
+    position: absolute;
+
+    bottom: 16px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 15;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 1rem;
+
+    letter-spacing: 3px;
+
+    color: #f7df8a;
+
+    text-shadow:
+        0 0 8px rgba(255,215,120,.8);
+}
+
+.star-card-number,
+.star-card-title {
+
+    padding: 4px 12px;
+
+    background:
+        rgba(0,0,0,.35);
+
+    border-radius: 999px;
+
+    backdrop-filter: blur(3px);
+}
+
+@keyframes legendaryBorder {
+
+    0%,100% {
+
+        box-shadow:
+            0 0 10px rgba(255,215,120,.8),
+            0 0 25px rgba(255,215,120,.6);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 20px rgba(255,215,120,1),
+            0 0 50px rgba(255,215,120,.9),
+            0 0 80px rgba(255,215,120,.35);
+    }
+}
+
+/* ===================================================== */
+/* ================= CARD INSPECT VIEW ================= */
+/* ===================================================== */
+
+.card-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .3s ease;
+
+    z-index: 9999;
+}
+
+.card-modal.active {
+
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.88);
+
+}
+
+.modal-content {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 60px;
+
+    width: min(1400px, 90vw);
+
+    z-index: 2;
+
+    animation:
+        inspectPop .25s ease;
+}
+
+.modal-card-container {
+
+    flex-shrink: 0;
+}
+
+.modal-card-container img {
+
+    width: 550px;
+
+    max-width: 42vw;
+
+    border-radius: 24px;
+
+    box-shadow:
+    0 0 30px rgba(180,140,255,.25);
+}
+
+.modal-info {
+
+    max-width: 600px;
+}
+
+.modal-info h2 {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 3rem;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 2px;
+}
+
+.modal-info p {
+
+    font-size: 1.1rem;
+
+    line-height: 1.9;
+
+    color:
+        rgba(255,255,255,.85);
+}
+
+#closeModal {
+
+    position: absolute;
+
+    top: -70px;
+    right: 0;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background:
+        rgba(255,255,255,.1);
+
+    color: white;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
+
+#closeModal:hover {
+
+    transform: scale(1.08);
+}
+
+@keyframes inspectPop {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .modal-content {
+
+        flex-direction: column;
+    }
+
+    .modal-card-container img {
+
+        width: 80vw;
+
+        max-width: 500px;
+    }
+
+    .modal-info {
+
+        text-align: center;
+    }
+}
+
+/* ===================================================== */
+/* ================= INSPECT HINT ====================== */
+/* ===================================================== */
+
+.inspect-hint {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    padding:
+        14px 24px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(15,15,25,.75);
+
+    backdrop-filter:
+        blur(10px);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    color: white;
+
+    font-size: .9rem;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    z-index: 1000;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 20px rgba(180,140,255,.35);
+
+    transition:
+        opacity .3s ease;
+}
+
+/* revealed cards only */
+
+.flip-card-inner.flipped .inspect-hint {
+
+    opacity: 1;
+}
+
+.tilt-card:hover .inspect-hint {
+
+    background:
+        rgba(120,80,255,.95);
+
+    box-shadow:
+        0 0 25px rgba(180,140,255,.9),
+        0 0 40px rgba(180,140,255,.4);
+}
+
+.flip-card-inner.flipped .inspect-hint {
+
+    animation:
+        inspectPulse 2s ease-in-out infinite;
+}
+
+@keyframes inspectGlow {
+
+    0% {
+
+        box-shadow:
+            0 0 10px rgba(180,140,255,.4);
+
+        filter: brightness(1);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 25px rgba(180,140,255,.9),
+            0 0 45px rgba(180,140,255,.5);
+
+        filter: brightness(1.2);
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 10px rgba(180,140,255,.4);
+
+        filter: brightness(1);
+    }
+}
+
+.flip-card-inner.flipped .tilt-card:hover {
+
+    box-shadow:
+        0 0 25px rgba(180,140,255,.4),
+        0 0 50px rgba(180,140,255,.2),
+        0 25px 45px rgba(0,0,0,.55);
+}
+
+.flip-card-inner.flipped .tilt-card:hover::after {
+
+    border:
+        2px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.15),
+        0 0 35px rgba(180,140,255,.5);
+}
+
+/* ---------- INSPECT USED ---------- */
+
+.inspect-hint.used {
+
+    opacity: 0 !important;
+
+    animation: none !important;
+
+    transition:
+        opacity .3s ease;
+}
+
+.corner-tl {
+
+    top: 12px;
+    left: 12px;
+
+    border-right: none;
+    border-bottom: none;
+}
+
+/* ===================================================== */
+/* ============= LEGENDARY STAR UPGRADES =============== */
+/* ===================================================== */
+
+.legendary-card {
+
+    overflow: hidden;
+
+    z-index: 10;
+
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+}
+
+/* ---------- CELESTIAL AURA ---------- */
+
+.legendary-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -30px;
+
+    border-radius: 40px;
+
+    background:
+        radial-gradient(
+            circle,
+
+            rgba(170,120,255,.35) 0%,
+            rgba(120,180,255,.18) 40%,
+            transparent 75%
+        );
+
+    filter: blur(30px);
+
+    z-index: -1;
+
+    animation:
+        celestialAura 6s ease-in-out infinite;
+}
+
+
+/* ---------- ORBITING STAR FIELD ---------- */
+
+.legendary-stars {
+
+    position: absolute;
+
+    inset: -20px;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    animation: none;
+}
+
+/* ---------- STRONGER GOLD BORDER ---------- */
+
+.star-card-frame::before {
+
+    animation:
+        legendaryBorder 4s ease-in-out infinite;
+
+    box-shadow:
+        0 0 10px rgba(255,215,120,.8),
+        0 0 25px rgba(255,215,120,.6),
+        0 0 45px rgba(255,215,120,.35),
+        inset 0 0 15px rgba(255,215,120,.25);
+}
+
+/* ---------- PREMIUM CORNERS ---------- */
+
+.corner {
+
+    position: absolute;
+
+    width: 28px;
+    height: 28px;
+
+    border: 3px solid #f7df8a;
+
+    z-index: 16;
+
+    pointer-events: none;
+}
+
+.corner-tl {
+
+    top: 12px;
+    left: 12px;
+
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-tr {
+
+    top: 12px;
+    right: 12px;
+
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-bl {
+
+    bottom: 12px;
+    left: 12px;
+
+    border-right: none;
+    border-top: none;
+}
+
+.corner-br {
+
+    bottom: 12px;
+    right: 12px;
+
+    border-left: none;
+    border-top: none;
+}
+
+/* ---------- STRONGER LEGENDARY HOVER ---------- */
+
+.legendary-card:hover {
+
+    box-shadow:
+        0 0 40px rgba(255,215,120,.35),
+        0 0 80px rgba(180,140,255,.35),
+        0 0 120px rgba(120,180,255,.2),
+        0 25px 45px rgba(0,0,0,.55);
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes celestialAura {
+
+    0%,100% {
+
+        opacity: .5;
+    }
+
+    50% {
+
+        opacity: 1;
+    }
+}
+
+@keyframes legendaryBorder {
+
+    0%,100% {
+
+        box-shadow:
+            0 0 10px rgba(255,215,120,.8),
+            0 0 25px rgba(255,215,120,.6);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 20px rgba(255,215,120,1),
+            0 0 50px rgba(255,215,120,.9),
+            0 0 90px rgba(255,215,120,.35);
+    }
+}
+
+#aiReading {
+
+    margin-top: 40px;
+
+    max-width: 900px;
+
+    margin-inline: auto;
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(8px);
+
+    text-align: left;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+}
