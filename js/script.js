@@ -549,6 +549,14 @@ function drawCards() {
     cardContainer.innerHTML = "";
     currentReading = [];
 
+    const deck =
+    document.createElement("div");
+
+deck.className =
+    "dealing-deck";
+
+cardContainer.appendChild(deck);
+
     aiReading.innerHTML = `
 <div class="reading-placeholder">
 
@@ -681,26 +689,28 @@ Draw five cards to reveal your fate.
 
     cardContainer.appendChild(cardWrapper);
 
-if (i === 4) {
+setTimeout(() => {
+
+    cardWrapper.classList.add(
+        "dealt"
+    );
+
+}, i * 450);
+
+setTimeout(() => {
+
+    deck.style.transition =
+        "opacity .5s ease";
+
+    deck.style.opacity = "0";
 
     setTimeout(() => {
 
-        cardWrapper.classList.add(
-            "final-card"
-        );
+        deck.remove();
 
-    }, i * 350);
+    }, 500);
 
-} else {
-
-    setTimeout(() => {
-
-        cardWrapper.classList.add(
-            "dealt"
-        );
-
-    }, i * 350);
-}
+}, 2200);
 
         const flipCard =
             cardWrapper.querySelector(".flip-card");

@@ -100,6 +100,10 @@ button:hover {
 
 #cardContainer {
 
+    position: relative;
+
+    min-height: 520px;
+
     margin-top: 70px;
 
     display: flex;
@@ -113,13 +117,58 @@ button:hover {
     gap: 40px;
 }
 
+.dealing-deck {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+
+    width: 280px;
+    height: 490px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #31215c,
+            #140d28
+        );
+
+    border:
+        2px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.55);
+
+    z-index: 100;
+}
+
 .reading-card {
+
     width: 300px;
 
-    display: flex;
-    flex-direction: column;
+    opacity: 0;
 
-    gap: 20px;
+    transform:
+        translateY(-20px);
+
+    transition:
+        transform .8s cubic-bezier(.22,.85,.3,1),
+        opacity .8s ease;
+}
+
+.reading-card.dealt {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
 }
 
 /* ---------- FLIP CARD ---------- */
@@ -631,67 +680,6 @@ rgba(170,90,255,.42) 40%,
     transform:
         translateX(-700px);
 
-}
-
-.reading-card.dealt {
-
-    animation:
-        dealFromLeft .8s
-        cubic-bezier(.22,.85,.3,1)
-        forwards;
-}
-
-.reading-card.final-card {
-
-    animation:
-        revealLastCard .8s
-        cubic-bezier(.22,.85,.3,1)
-        forwards;
-}
-
-@keyframes dealFromLeft {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translateX(-700px)
-            rotate(-10deg);
-    }
-
-    70% {
-
-        opacity: 1;
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-            translateX(0)
-            rotate(0deg);
-    }
-}
-
-@keyframes revealLastCard {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            scale(.95);
-    }
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-            scale(1);
-    }
 }
 
 @keyframes celestialAura {
