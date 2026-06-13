@@ -687,7 +687,25 @@ Draw five cards to reveal your fate.
 
         `;
 
-    cardContainer.appendChild(cardWrapper);
+cardContainer.appendChild(cardWrapper);
+
+if (i === 4) {
+
+    cardWrapper.style.opacity = "1";
+
+    cardWrapper.style.transform =
+        "translateX(-50%)";
+
+    cardWrapper.style.zIndex = "10";
+}
+
+const positions = [
+    -640,
+    -320,
+    0,
+    320,
+    640
+];
 
 setTimeout(() => {
 
@@ -695,22 +713,15 @@ setTimeout(() => {
         "dealt"
     );
 
-}, i * 450);
+    cardWrapper.style.transform = `
+        translateX(
+            calc(
+                -50% + ${positions[i]}px
+            )
+        )
+    `;
 
-setTimeout(() => {
-
-    deck.style.transition =
-        "opacity .5s ease";
-
-    deck.style.opacity = "0";
-
-    setTimeout(() => {
-
-        deck.remove();
-
-    }, 500);
-
-}, 2200);
+}, i * 500);
 
         const flipCard =
             cardWrapper.querySelector(".flip-card");
@@ -781,26 +792,18 @@ setTimeout(() => {
 
     setTimeout(() => {
 
-    const deck =
-        document.querySelector(
-            ".virtual-deck"
-        );
+    deck.style.transition =
+        "opacity .5s ease";
 
-    if (deck) {
+    deck.style.opacity = "0";
 
-        deck.style.transition =
-            "opacity .5s ease";
+    setTimeout(() => {
 
-        deck.style.opacity = "0";
+        deck.remove();
 
-        setTimeout(() => {
+    }, 500);
 
-            deck.remove();
-
-        }, 500);
-    }
-
-}, 1400);
+}, 2600);
 }
 
 
