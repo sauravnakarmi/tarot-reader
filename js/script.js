@@ -685,17 +685,28 @@ Draw five cards to reveal your fate.
 
         `;
 
-        cardWrapper.style.opacity = "0";
+    cardContainer.appendChild(cardWrapper);
 
-cardContainer.appendChild(cardWrapper);
+if (i === 4) {
 
-setTimeout(() => {
+    setTimeout(() => {
 
-    cardWrapper.classList.add(
-        "dealing"
-    );
+        cardWrapper.classList.add(
+            "final-card"
+        );
 
-}, i * 250);
+    }, i * 350);
+
+} else {
+
+    setTimeout(() => {
+
+        cardWrapper.classList.add(
+            "dealt"
+        );
+
+    }, i * 350);
+}
 
 setTimeout(() => {
 
