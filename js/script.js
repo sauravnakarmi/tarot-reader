@@ -689,22 +689,13 @@ Draw five cards to reveal your fate.
 
 cardContainer.appendChild(cardWrapper);
 
-if (i === 4) {
-
-    cardWrapper.style.opacity = "1";
-
-    cardWrapper.style.transform =
-        "translateX(-50%)";
-
-    cardWrapper.style.zIndex = "10";
-}
 
 const positions = [
-    -640,
-    -320,
-    0,
-    320,
-    640
+    1280, // first card
+    960,  // second
+    640,  // third
+    320,  // fourth
+    0      // fifth stays in deck
 ];
 
 setTimeout(() => {
@@ -713,13 +704,8 @@ setTimeout(() => {
         "dealt"
     );
 
-    cardWrapper.style.transform = `
-        translateX(
-            calc(
-                -50% + ${positions[i]}px
-            )
-        )
-    `;
+    cardWrapper.style.transform =
+    `translateX(${positions[i]}px)`;
 
 }, i * 500);
 
