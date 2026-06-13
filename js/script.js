@@ -1,4 +1,6 @@
 let currentReading = [];
+let typingCancelled = false;
+let currentTypingSession = 0;
 
 const tarotCards = [
 
@@ -544,7 +546,7 @@ document
 drawBtn.addEventListener("click", drawCards);
 
 function drawCards() {
-
+    currentTypingSession++;
     cardContainer.innerHTML = "";
     currentReading = [];
 
@@ -775,27 +777,43 @@ function startOracleLoading() {
 }
 
 /* ---------- TYPEWRITER EFFECT ---------- */
-function typeWriter(element, text, speed = 15) {
+function typeWriter(
+    element,
+    text,
+    speed = 15
+) {
 
     element.innerHTML = "";
+
+    const session =
+        ++currentTypingSession;
 
     let i = 0;
 
     function type() {
 
+        if (
+            session !== currentTypingSession
+        ) {
+            return;
+        }
+
         if (i < text.length) {
 
-            element.innerHTML += text.charAt(i);
+            element.innerHTML +=
+                text.charAt(i);
 
             i++;
 
-            setTimeout(type, speed);
+            setTimeout(
+                type,
+                speed
+            );
         }
     }
 
     type();
 }
-
 
 /* ---------- TILT EFFECT ---------- */
 
