@@ -60,7 +60,7 @@ Write like a professional tarot reader.
                         "application/json",
 
                     "HTTP-Referer":
-                        "http://localhost:3000",
+                        "https://sauravnakarmi.github.io/tarot-reader/",
 
                     "X-Title":
                         "Tarot Reader"
