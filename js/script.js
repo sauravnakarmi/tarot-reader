@@ -767,9 +767,6 @@ function startOracleLoading() {
 
     return setInterval(() => {
 
-        const loadingAnimation =
-    startOracleLoading();
-
         index =
             (index + 1)
             % symbols.length;
