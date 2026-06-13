@@ -549,6 +549,12 @@ function drawCards() {
     cardContainer.innerHTML = "";
     currentReading = [];
 
+    const deck = document.createElement("div");
+
+deck.className = "virtual-deck";
+
+cardContainer.appendChild(deck);
+
     aiReading.innerHTML = `
 <div class="reading-placeholder">
 
@@ -558,21 +564,15 @@ function drawCards() {
 <br>
 ╚══════════════════════════════╝
 
-<br><br>
+<br>
 
 The deck rests in silence.
 
-<br><br>
+<br>
 
 Draw five cards to reveal your fate.
 
-<br><br>
-
-► DRAW READING
 <br>
-► REVEAL THE CARDS
-<br>
-► CONSULT THE ORACLE
 
 </div>
 `;
@@ -685,7 +685,40 @@ Draw five cards to reveal your fate.
 
         `;
 
-        cardContainer.appendChild(cardWrapper);
+        cardWrapper.style.opacity = "0";
+
+cardContainer.appendChild(cardWrapper);
+
+setTimeout(() => {
+
+    cardWrapper.classList.add(
+        "dealing"
+    );
+
+}, i * 250);
+
+setTimeout(() => {
+
+    const deck =
+        document.querySelector(
+            ".virtual-deck"
+        );
+
+    if (deck) {
+
+        deck.style.transition =
+            "opacity .5s ease";
+
+        deck.style.opacity = "0";
+
+        setTimeout(() => {
+
+            deck.remove();
+
+        }, 500);
+    }
+
+}, 1400);
 
         const flipCard =
             cardWrapper.querySelector(".flip-card");

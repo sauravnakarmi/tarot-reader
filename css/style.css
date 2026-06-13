@@ -621,6 +621,54 @@ rgba(170,90,255,.42) 40%,
 /* ===================== ANIMATIONS ==================== */
 /* ===================================================== */
 
+/* ===================================================== */
+/* ================= CARD DEAL ANIMATION =============== */
+/* ===================================================== */
+
+.dealing {
+
+    animation:
+        dealFromDeck 0.9s
+        cubic-bezier(.15,.85,.25,1)
+        forwards;
+}
+
+@keyframes dealFromDeck {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(calc(700px - 50vw))
+            translateY(-150px)
+            rotate(-15deg)
+            scale(.35);
+    }
+
+    40% {
+
+        opacity: 1;
+
+        transform:
+            translateX(calc(700px - 50vw))
+            translateY(-80px)
+            rotate(-8deg)
+            scale(.45);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(0deg)
+            scale(1);
+    }
+}
+
 @keyframes celestialAura {
 
     0%,100% {
@@ -1484,4 +1532,32 @@ rgba(170,90,255,.42) 40%,
     50% {
         opacity: 0;
     }
+}
+
+.virtual-deck {
+
+    position: absolute;
+
+    width: 280px;
+    height: 490px;
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(circle at top,
+        #31215c,
+        #140d28);
+
+    border:
+        2px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.55);
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 1;
 }
