@@ -1,5 +1,4 @@
 let currentReading = [];
-let typingCancelled = false;
 let currentTypingSession = 0;
 
 const tarotCards = [
@@ -902,6 +901,8 @@ aiReadingBtn.addEventListener(
     "click",
     async () => {
 
+        currentTypingSession++;
+
         if (
             currentReading.length !== 5
         ) {
@@ -963,10 +964,6 @@ Guidance: ${currentReading[4].name}
 
         const data =
             await response.json();
-
-        clearInterval(
-    loadingAnimation
-);
 
         const readingText = `
 
