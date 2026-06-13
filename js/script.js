@@ -549,12 +549,6 @@ function drawCards() {
     cardContainer.innerHTML = "";
     currentReading = [];
 
-    const deck = document.createElement("div");
-
-deck.className = "virtual-deck";
-
-cardContainer.appendChild(deck);
-
     aiReading.innerHTML = `
 <div class="reading-placeholder">
 
@@ -708,29 +702,6 @@ if (i === 4) {
     }, i * 350);
 }
 
-setTimeout(() => {
-
-    const deck =
-        document.querySelector(
-            ".virtual-deck"
-        );
-
-    if (deck) {
-
-        deck.style.transition =
-            "opacity .5s ease";
-
-        deck.style.opacity = "0";
-
-        setTimeout(() => {
-
-            deck.remove();
-
-        }, 500);
-    }
-
-}, 1400);
-
         const flipCard =
             cardWrapper.querySelector(".flip-card");
 
@@ -797,27 +768,32 @@ setTimeout(() => {
             }
         });
     }
+
+    setTimeout(() => {
+
+    const deck =
+        document.querySelector(
+            ".virtual-deck"
+        );
+
+    if (deck) {
+
+        deck.style.transition =
+            "opacity .5s ease";
+
+        deck.style.opacity = "0";
+
+        setTimeout(() => {
+
+            deck.remove();
+
+        }, 500);
+    }
+
+}, 1400);
 }
 
-function startOracleLoading() {
 
-    const symbols = [
-        "◐",
-        "◓",
-        "◑",
-        "◒"
-    ];
-
-    let index = 0;
-
-    return setInterval(() => {
-
-        index =
-            (index + 1)
-            % symbols.length;
-
-    }, 250);
-}
 
 /* ---------- TYPEWRITER EFFECT ---------- */
 function typeWriter(
