@@ -767,33 +767,8 @@ function startOracleLoading() {
 
     return setInterval(() => {
 
-        aiReading.innerHTML = `
-<div class="oracle-loading">
-
-═══════════════════════════════
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;THE ORACLE SPEAKS
-<br>
-═══════════════════════════════
-
-<br><br>
-
-Past: ${currentReading[0].name}
-<br>
-Present: ${currentReading[1].name}
-<br>
-Future: ${currentReading[2].name}
-<br>
-Challenge: ${currentReading[3].name}
-<br>
-Guidance: ${currentReading[4].name}
-
-<br><br>
-
-✦ Consulting the cards ${symbols[index]}
-
-</div>
-`;
+        const loadingAnimation =
+    startOracleLoading();
 
         index =
             (index + 1)
@@ -973,6 +948,10 @@ Guidance: ${currentReading[4].name}
 
         const data =
             await response.json();
+
+        clearInterval(
+    loadingAnimation
+);
 
         const readingText = `
 
