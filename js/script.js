@@ -548,6 +548,13 @@ function drawCards() {
     cardContainer.innerHTML = "";
 
         currentReading = [];
+        aiReading.innerHTML = `
+        <div class="reading-placeholder">
+            🔮 Draw your cards and click
+            <strong>AI Reading</strong>
+            to receive an interpretation.
+        </div>
+    `;
 
     const usedIndexes = [];
 
@@ -825,8 +832,21 @@ aiReadingBtn.addEventListener(
             return;
         }
 
-        aiReading.innerHTML =
-            "🔮 Consulting the cards...";
+        aiReading.innerHTML = `
+    <strong>Your Spread</strong>
+
+    <br><br>
+
+    Past: ${currentReading[0].name}<br>
+    Present: ${currentReading[1].name}<br>
+    Future: ${currentReading[2].name}<br>
+    Challenge: ${currentReading[3].name}<br>
+    Guidance: ${currentReading[4].name}
+
+    <br><br>
+
+    🔮 Consulting the cards...
+`;
 
         const response =
             await fetch(

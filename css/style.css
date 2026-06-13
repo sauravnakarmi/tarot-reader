@@ -1405,3 +1405,14 @@ rgba(170,90,255,.42) 40%,
 
     white-space: pre-wrap;
 }
+
+.reading-placeholder {
+
+    text-align: center;
+
+    opacity: .8;
+
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+}
