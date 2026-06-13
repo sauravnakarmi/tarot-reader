@@ -624,37 +624,45 @@ rgba(170,90,255,.42) 40%,
 /* ===================================================== */
 /* ================= CARD DEAL ANIMATION =============== */
 /* ===================================================== */
+.reading-card {
 
-.dealing {
+    opacity: 0;
+
+    transform:
+        translateX(-700px);
+
+}
+
+.reading-card.dealt {
 
     animation:
-        dealFromDeck 0.9s
-        cubic-bezier(.15,.85,.25,1)
+        dealFromLeft .8s
+        cubic-bezier(.22,.85,.3,1)
         forwards;
 }
 
-@keyframes dealFromDeck {
+.reading-card.final-card {
+
+    animation:
+        revealLastCard .8s
+        cubic-bezier(.22,.85,.3,1)
+        forwards;
+}
+
+@keyframes dealFromLeft {
 
     0% {
 
         opacity: 0;
 
         transform:
-            translateX(calc(700px - 50vw))
-            translateY(-150px)
-            rotate(-15deg)
-            scale(.35);
+            translateX(-700px)
+            rotate(-10deg);
     }
 
-    40% {
+    70% {
 
         opacity: 1;
-
-        transform:
-            translateX(calc(700px - 50vw))
-            translateY(-80px)
-            rotate(-8deg)
-            scale(.45);
     }
 
     100% {
@@ -663,8 +671,25 @@ rgba(170,90,255,.42) 40%,
 
         transform:
             translateX(0)
-            translateY(0)
-            rotate(0deg)
+            rotate(0deg);
+    }
+}
+
+@keyframes revealLastCard {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(.95);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
             scale(1);
     }
 }
@@ -1560,4 +1585,31 @@ rgba(170,90,255,.42) 40%,
         translateX(-50%);
 
     z-index: 1;
+}
+
+#deckPile {
+
+    position: absolute;
+
+    left: 40px;
+
+    top: 50%;
+
+    width: 280px;
+    height: 490px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #31215c,
+            #140d28
+        );
+
+    border:
+        2px solid rgba(255,255,255,.12);
 }
