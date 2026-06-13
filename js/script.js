@@ -546,15 +546,35 @@ drawBtn.addEventListener("click", drawCards);
 function drawCards() {
 
     cardContainer.innerHTML = "";
+    currentReading = [];
 
-        currentReading = [];
-        aiReading.innerHTML = `
-        <div class="reading-placeholder">
-            🔮 Draw your cards and click
-            <strong>AI Reading</strong>
-            to receive an interpretation.
-        </div>
-    `;
+    aiReading.innerHTML = `
+<div class="reading-placeholder">
+
+╔══════════════════════════════╗
+<br>
+✦ THE ORACLE AWAITS ✦
+<br>
+╚══════════════════════════════╝
+
+<br><br>
+
+The deck rests in silence.
+
+<br><br>
+
+Draw five cards to reveal your fate.
+
+<br><br>
+
+► DRAW READING
+<br>
+► REVEAL THE CARDS
+<br>
+► CONSULT THE ORACLE
+
+</div>
+`;
 
     const usedIndexes = [];
 
@@ -733,6 +753,28 @@ function drawCards() {
         });
     }
 }
+/* ---------- TYPEWRITER EFFECT ---------- */
+function typeWriter(element, text, speed = 15) {
+
+    element.innerHTML = "";
+
+    let i = 0;
+
+    function type() {
+
+        if (i < text.length) {
+
+            element.innerHTML += text.charAt(i);
+
+            i++;
+
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
 
 /* ---------- TILT EFFECT ---------- */
 
@@ -833,19 +875,31 @@ aiReadingBtn.addEventListener(
         }
 
         aiReading.innerHTML = `
-    <strong>Your Spread</strong>
+<div class="oracle-loading">
 
-    <br><br>
+═══════════════════════════════
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;THE ORACLE SPEAKS
+<br>
+═══════════════════════════════
 
-    Past: ${currentReading[0].name}<br>
-    Present: ${currentReading[1].name}<br>
-    Future: ${currentReading[2].name}<br>
-    Challenge: ${currentReading[3].name}<br>
-    Guidance: ${currentReading[4].name}
+<br><br>
 
-    <br><br>
+Past: ${currentReading[0].name}
+<br>
+Present: ${currentReading[1].name}
+<br>
+Future: ${currentReading[2].name}
+<br>
+Challenge: ${currentReading[3].name}
+<br>
+Guidance: ${currentReading[4].name}
 
-    🔮 Consulting the cards...
+<br><br>
+
+✦ Consulting the cards...
+
+</div>
 `;
 
         const response =
@@ -860,7 +914,6 @@ aiReadingBtn.addEventListener(
                     },
 
                     body: JSON.stringify({
-
                         cards:
                             currentReading.map(
                                 card => card.name
@@ -872,7 +925,23 @@ aiReadingBtn.addEventListener(
         const data =
             await response.json();
 
-        aiReading.innerHTML =
-            data.reading;
+        const readingText = `
+
+═══════════════════════════════
+
+        ORACLE READING
+
+═══════════════════════════════
+
+
+${data.reading}
+
+`;
+
+        typeWriter(
+            aiReading,
+            readingText,
+            12
+        );
     }
 );
