@@ -416,7 +416,7 @@ aiReadingBtn.addEventListener(
 
         const response =
             await fetch(
-                "https://tarot-reader-jdwc.onrender.com",
+                "https://tarot-reader-jdwc.onrender.com/reading",
                 {
                     method: "POST",
 
