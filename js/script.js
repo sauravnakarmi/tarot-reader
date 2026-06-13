@@ -108,7 +108,7 @@ const tarotCards = [
     name: "The Star",
     image: "images/the_star.jpg",
     meaning: "The Star represents hope, healing, inspiration, spiritual renewal, and faith in the future.",
-    special: false
+    special: true
 },
 {
     name: "The Moon",
@@ -753,6 +753,55 @@ Draw five cards to reveal your fate.
         });
     }
 }
+
+function startOracleLoading() {
+
+    const symbols = [
+        "◐",
+        "◓",
+        "◑",
+        "◒"
+    ];
+
+    let index = 0;
+
+    return setInterval(() => {
+
+        aiReading.innerHTML = `
+<div class="oracle-loading">
+
+═══════════════════════════════
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;THE ORACLE SPEAKS
+<br>
+═══════════════════════════════
+
+<br><br>
+
+Past: ${currentReading[0].name}
+<br>
+Present: ${currentReading[1].name}
+<br>
+Future: ${currentReading[2].name}
+<br>
+Challenge: ${currentReading[3].name}
+<br>
+Guidance: ${currentReading[4].name}
+
+<br><br>
+
+✦ Consulting the cards ${symbols[index]}
+
+</div>
+`;
+
+        index =
+            (index + 1)
+            % symbols.length;
+
+    }, 250);
+}
+
 /* ---------- TYPEWRITER EFFECT ---------- */
 function typeWriter(element, text, speed = 15) {
 
