@@ -778,46 +778,36 @@ setTimeout(() => {
 }, 2600);
 }
 
+currentTypingSession++;
 
+aiReading.style.opacity = "0";
 
-/* ---------- TYPEWRITER EFFECT ---------- */
-function typeWriter(
-    element,
-    text,
-    speed = 15
-) {
+setTimeout(() => {
 
-    element.innerHTML = "";
+    aiReading.innerHTML = `
+    <div class="reading-placeholder">
 
-    const session =
-        ++currentTypingSession;
+        ✦ THE ORACLE AWAITS ✦
 
-    let i = 0;
+        <br><br>
 
-    function type() {
+        Draw your cards and click
 
-        if (
-            session !== currentTypingSession
-        ) {
-            return;
-        }
+        <br>
 
-        if (i < text.length) {
+        Consult the Oracle
 
-            element.innerHTML +=
-                text.charAt(i);
+        <br>
 
-            i++;
+        to reveal your fate.
 
-            setTimeout(
-                type,
-                speed
-            );
-        }
-    }
+    </div>
+    `;
 
-    type();
-}
+    aiReading.style.opacity = "1";
+
+}, 200);
+
 
 /* ---------- TILT EFFECT ---------- */
 
