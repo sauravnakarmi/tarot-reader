@@ -1043,10 +1043,6 @@ clearInterval(
 
     </div>
 
-    <div class="oracle-divider">
-        ✦ ✦ ✦
-    </div>
-
     <div class="oracle-reading-text">
 
         ${data.reading
