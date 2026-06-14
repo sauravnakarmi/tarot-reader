@@ -1682,19 +1682,6 @@ rgba(170,90,255,.42) 40%,
     white-space: pre-wrap;
 }
 
-.oracle-reading::after {
-
-    content: "▌";
-
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-
-    50% {
-        opacity: 0;
-    }
-}
 
 #idleDeck {
 
@@ -1852,4 +1839,87 @@ rgba(170,90,255,.42) 40%,
         rgba(255,255,255,.8);
 
     min-height: 40px;
+}
+
+.oracle-reading-header {
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 1.6rem;
+
+    letter-spacing: 4px;
+
+    color: #f7df8a;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 15px rgba(247,223,138,.4);
+}
+
+.oracle-cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(140px, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.oracle-cards div {
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 12px;
+
+    padding: 10px;
+
+    text-align: center;
+}
+
+.oracle-cards span {
+
+    display: block;
+
+    font-size: .7rem;
+
+    letter-spacing: 2px;
+
+    color: #f7df8a;
+
+    margin-bottom: 6px;
+}
+
+.oracle-divider {
+
+    text-align: center;
+
+    margin: 25px 0;
+
+    color: #f7df8a;
+
+    letter-spacing: 8px;
+
+    opacity: .7;
+}
+
+.oracle-reading-text {
+
+    color:
+        rgba(255,255,255,.88);
+
+    line-height: 2;
+
+    font-size: 1rem;
+
+    text-align: left;
 }

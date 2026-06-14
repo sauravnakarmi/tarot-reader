@@ -1033,23 +1033,57 @@ clearInterval(
     dotsInterval
 );
 
-        const readingText = `
+        aiReading.innerHTML = `
 
-═══════════════════════════════
+<div class="oracle-reading">
 
-        ORACLE READING
+    <div class="oracle-reading-header">
 
-═══════════════════════════════
+        ✦ THE ORACLE SPEAKS ✦
 
+    </div>
 
-${data.reading}
+    <div class="oracle-cards">
 
+        <div>
+            <span>PAST</span>
+            ${currentReading[0].name}
+        </div>
+
+        <div>
+            <span>PRESENT</span>
+            ${currentReading[1].name}
+        </div>
+
+        <div>
+            <span>FUTURE</span>
+            ${currentReading[2].name}
+        </div>
+
+        <div>
+            <span>CHALLENGE</span>
+            ${currentReading[3].name}
+        </div>
+
+        <div>
+            <span>GUIDANCE</span>
+            ${currentReading[4].name}
+        </div>
+
+    </div>
+
+    <div class="oracle-divider">
+        ✦ ✦ ✦
+    </div>
+
+    <div class="oracle-reading-text">
+
+        ${data.reading
+            .replace(/\n/g, "<br><br>")}
+
+    </div>
+
+</div>
 `;
-
-        typeWriter(
-            aiReading,
-            readingText,
-            12
-        );
     }
 );
