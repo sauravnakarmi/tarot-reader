@@ -547,6 +547,18 @@ drawBtn.addEventListener("click", drawCards);
 function drawCards() {
     currentTypingSession++;
     cardContainer.innerHTML = "";
+const idleDeck =
+    document.getElementById(
+        "idleDeck"
+    );
+
+if (idleDeck) {
+
+    idleDeck.style.opacity = "0";
+
+    idleDeck.style.transform =
+        "scale(.9)";
+}
     currentReading = [];
 
     const deck =
@@ -575,6 +587,10 @@ The deck rests in silence.
 <br>
 
 Draw five cards to reveal your fate.
+
+<br>
+
+Consult the oracle.
 
 <br>
 

@@ -1583,4 +1583,34 @@ rgba(170,90,255,.42) 40%,
     }
 }
 
+#idleDeck {
 
+    opacity: 1;
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
+}
+
+#idlePrompt {
+
+    position: absolute;
+
+    left: 40px;
+
+    top: 520px;
+
+    width: 280px;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(247,223,138,.75);
+
+    text-shadow:
+        0 0 10px rgba(247,223,138,.15);
+}
