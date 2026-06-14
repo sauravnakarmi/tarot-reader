@@ -122,7 +122,48 @@ button:hover {
     width: 280px;
     height: 490px;
 
-    transform: none;
+    border-radius: 24px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #31215c,
+            #140d28
+        );
+
+    border:
+        2px solid rgba(255,255,255,.08);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 6rem;
+
+    color:
+        rgba(255,255,255,.75);
+
+    text-shadow:
+        0 0 20px rgba(180,130,255,.4);
+
+    box-shadow:
+        6px -6px 0 rgba(255,255,255,.04),
+        12px -12px 0 rgba(255,255,255,.03),
+        18px -18px 0 rgba(255,255,255,.02),
+        0 25px 45px rgba(0,0,0,.55);
+
+    z-index: 500;
+}
+
+.dealing-deck::before,
+.dealing-deck::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
 
     border-radius: 24px;
 
@@ -134,12 +175,29 @@ button:hover {
         );
 
     border:
-        2px solid rgba(255,255,255,.12);
+        2px solid rgba(255,255,255,.08);
 
-    box-shadow:
-        0 25px 45px rgba(0,0,0,.55);
+    pointer-events: none;
+}
 
-    z-index: 100;
+.dealing-deck::before {
+
+    transform:
+        translate(8px,-8px);
+
+    opacity: .8;
+
+    z-index: -1;
+}
+
+.dealing-deck::after {
+
+    transform:
+        translate(16px,-16px);
+
+    opacity: .6;
+
+    z-index: -2;
 }
 
 .reading-card {

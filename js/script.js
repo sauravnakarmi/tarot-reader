@@ -555,6 +555,8 @@ function drawCards() {
 deck.className =
     "dealing-deck";
 
+deck.innerHTML = "✦";
+
 cardContainer.appendChild(deck);
 
     aiReading.innerHTML = `
