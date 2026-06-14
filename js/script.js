@@ -512,12 +512,6 @@ function openCardModal(card, inspectHint) {
 
     <br><br>
 
-    <strong>Reflection</strong>
-
-    <br><br>
-
-    Consider how this card connects to your current circumstances and what guidance it may be offering.
-
 `;
 
     cardModal.classList.add("active");
@@ -570,32 +564,6 @@ deck.className =
 deck.innerHTML = "✦";
 
 cardContainer.appendChild(deck);
-
-    aiReading.innerHTML = `
-<div class="reading-placeholder">
-
-╔══════════════════════════════╗
-<br>
-✦ THE ORACLE AWAITS ✦
-<br>
-╚══════════════════════════════╝
-
-<br>
-
-The deck rests in silence.
-
-<br>
-
-Draw five cards to reveal your fate.
-
-<br>
-
-Consult the oracle.
-
-<br>
-
-</div>
-`;
 
     const usedIndexes = [];
 
@@ -954,30 +922,85 @@ aiReadingBtn.addEventListener(
         aiReading.innerHTML = `
 <div class="oracle-loading">
 
-═══════════════════════════════
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;THE ORACLE SPEAKS
-<br>
-═══════════════════════════════
+    <div class="oracle-rune-circle">
 
-<br><br>
+        <span>✦</span>
+        <span>☾</span>
+        <span>✧</span>
+        <span>☉</span>
 
-Past: ${currentReading[0].name}
-<br>
-Present: ${currentReading[1].name}
-<br>
-Future: ${currentReading[2].name}
-<br>
-Challenge: ${currentReading[3].name}
-<br>
-Guidance: ${currentReading[4].name}
+    </div>
 
-<br><br>
+    <div
+        class="oracle-status"
+        id="oracleStatus"
+    >
+        Reading the threads of fate...
+    </div>
 
-✦ Consulting the cards...
+    <div
+        class="oracle-dots"
+        id="oracleDots"
+    >
+        .
+    </div>
 
 </div>
 `;
+
+const oracleMessages = [
+
+    "Reading the threads of fate...",
+    "Consulting ancient spirits...",
+    "Interpreting celestial signs...",
+    "Peering beyond the veil...",
+    "Gathering hidden truths...",
+    "Listening to the whispers of destiny...",
+    "Aligning the stars..."
+];
+
+let messageIndex = 0;
+
+const statusInterval =
+setInterval(() => {
+
+    const status =
+    document.getElementById(
+        "oracleStatus"
+    );
+
+    if (!status) return;
+
+    messageIndex =
+        (messageIndex + 1)
+        % oracleMessages.length;
+
+    status.textContent =
+        oracleMessages[
+            messageIndex
+        ];
+
+}, 1500);
+
+let dotCount = 1;
+
+const dotsInterval =
+setInterval(() => {
+
+    const dots =
+    document.getElementById(
+        "oracleDots"
+    );
+
+    if (!dots) return;
+
+    dotCount =
+        (dotCount % 3) + 1;
+
+    dots.textContent =
+        ".".repeat(dotCount);
+
+}, 500);
 
         const response =
             await fetch(
@@ -1001,6 +1024,14 @@ Guidance: ${currentReading[4].name}
 
         const data =
             await response.json();
+        
+            clearInterval(
+    statusInterval
+);
+
+clearInterval(
+    dotsInterval
+);
 
         const readingText = `
 

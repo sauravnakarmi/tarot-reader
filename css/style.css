@@ -1727,3 +1727,129 @@ rgba(170,90,255,.42) 40%,
     text-shadow:
         0 0 10px rgba(247,223,138,.15);
 }
+
+.oracle-loading {
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.oracle-rune-circle {
+
+    position: relative;
+
+    width: 160px;
+    height: 160px;
+
+    margin: 0 auto 30px;
+
+    animation:
+        oracleRotate 12s linear infinite;
+}
+
+.oracle-rune-circle span {
+
+    position: absolute;
+
+    font-size: 2rem;
+
+    color: #f7df8a;
+
+    text-shadow:
+        0 0 15px rgba(247,223,138,.5);
+}
+
+.oracle-rune-circle span:nth-child(1) {
+
+    top: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.oracle-rune-circle span:nth-child(2) {
+
+    left: 0;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+}
+
+.oracle-rune-circle span:nth-child(3) {
+
+    right: 0;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+}
+
+.oracle-rune-circle span:nth-child(4) {
+
+    bottom: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.oracle-status {
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 3px;
+
+    color: #f7df8a;
+
+    margin-bottom: 10px;
+
+    animation:
+        oraclePulse 2s ease-in-out infinite;
+}
+
+.oracle-substatus {
+
+    color:
+        rgba(255,255,255,.7);
+}
+
+@keyframes oracleRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+@keyframes oraclePulse {
+
+    0%,100% {
+
+        opacity: .5;
+    }
+
+    50% {
+
+        opacity: 1;
+    }
+}
+
+.oracle-dots {
+
+    font-size: 2rem;
+
+    color:
+        rgba(255,255,255,.8);
+
+    min-height: 40px;
+}
