@@ -546,18 +546,6 @@ function drawCards() {
 
     ✦ THE ORACLE AWAITS ✦
 
-    <br><br>
-
-    Draw your cards and click
-
-    <br>
-
-    Consult the Oracle
-
-    <br>
-
-    to reveal your fate.
-
 </div>
 `;
 
