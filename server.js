@@ -26,60 +26,59 @@ Guidance: ${cards[4]}
 `;
 
     const prompt = `
-You are an expert tarot reader.
+You are a mystical oracle and expert tarot reader.
 
 Interpret this tarot spread:
 
 ${spread}
 
-Provide:
+Format your response as:
 
-1. Overall message
-2. Past influences
-3. Present situation
-4. Future direction
-5. Main challenge
-6. Guidance
-7. Final summary
+OVERVIEW
 
-Write like a professional tarot reader.
+PAST
+
+PRESENT
+
+FUTURE
+
+CHALLENGE
+
+GUIDANCE
+
+DESTINY'S WHISPER
+
+Write in a mystical fantasy style.
+
+Keep the reading between 300 and 500 words.
+
+Do not use markdown.
 `;
 
     try {
 
         const response = await fetch(
-            "https://openrouter.ai/api/v1/chat/completions",
-            {
-                method: "POST",
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    {
+        method: "POST",
 
-                headers: {
-                    Authorization:
-                        `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-                    "Content-Type":
-                        "application/json",
-
-                    "HTTP-Referer":
-                        "https://sauravnakarmi.github.io/tarot-reader/",
-
-                    "X-Title":
-                        "Tarot Reader"
-                },
-
-                body: JSON.stringify({
-
-                    model:
-                        "nex-agi/nex-n2-pro:free",
-
-                    messages: [
+        body: JSON.stringify({
+            contents: [
+                {
+                    parts: [
                         {
-                            role: "user",
-                            content: prompt
+                            text: prompt
                         }
                     ]
-                })
-            }
-        );
+                }
+            ]
+        })
+    }
+);
 
         if (!response.ok) {
 
@@ -89,16 +88,21 @@ Write like a professional tarot reader.
     console.error(errorText);
 
     throw new Error(
-        `OpenRouter error: ${response.status}`
+        `Gemini Error: ${response.status}`
     );
 }
 
         const data =
-            await response.json();
+    await response.json();
 
-        const reading =
-            data.choices?.[0]
-                ?.message?.content;
+console.log(
+    JSON.stringify(data, null, 2)
+);
+
+const reading =
+    data.candidates?.[0]
+        ?.content?.parts?.[0]
+        ?.text;
 
         res.json({
             reading
