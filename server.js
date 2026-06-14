@@ -69,7 +69,7 @@ Write like a professional tarot reader.
                 body: JSON.stringify({
 
                     model:
-                        "nex-agi/nex-n2-pro:free",
+                        "meta-llama/llama-3.3-70b-instruct:free",
 
                     messages: [
                         {
