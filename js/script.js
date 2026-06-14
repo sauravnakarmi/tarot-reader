@@ -494,6 +494,11 @@ const drawBtn =
 const cardContainer =
     document.getElementById("cardContainer");
 
+const aiReading =
+    document.getElementById(
+        "aiReading"
+    );
+
 function openCardModal(card, inspectHint) {
 
     modalImage.src =
@@ -866,11 +871,6 @@ function addTiltEffect(card) {
 const aiReadingBtn =
     document.getElementById(
         "aiReadingBtn"
-    );
-
-const aiReading =
-    document.getElementById(
-        "aiReading"
     );
 
 aiReadingBtn.addEventListener(
