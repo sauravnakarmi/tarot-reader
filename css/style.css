@@ -272,6 +272,62 @@ button:hover {
     backface-visibility: hidden;
 
     -webkit-backface-visibility: hidden;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at top, #31215c, #140d28);
+
+    border:
+        2px solid rgba(255,255,255,.08);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.45);
+
+    animation:
+        hiddenCardGlow 2.5s ease-in-out infinite;
+
+    animation:
+    hiddenCardGlow 2.5s ease-in-out infinite,
+    hiddenCardFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes hiddenCardGlow {
+
+    0%, 100% {
+
+        box-shadow:
+            0 0 10px rgba(180,130,255,.15),
+            0 25px 45px rgba(0,0,0,.45);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 25px rgba(180,130,255,.45),
+            0 0 45px rgba(120,180,255,.25),
+            0 25px 45px rgba(0,0,0,.45);
+    }
+}
+
+.flip-card-inner.flipped .card-back {
+
+    animation: none;
+}
+
+@keyframes hiddenCardFloat {
+
+    0%,100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
 }
 
 /* ---------- BACK ---------- */
