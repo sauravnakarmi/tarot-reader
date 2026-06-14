@@ -1005,7 +1005,6 @@ clearInterval(
 );
 
         aiReading.innerHTML = `
-
 <div class="oracle-reading">
 
     <div class="oracle-reading-header">

@@ -1596,7 +1596,7 @@ rgba(170,90,255,.42) 40%,
 
     margin-inline: auto;
 
-    padding: 30px;
+    padding: 20px 30px 30px 30px;
 
     border-radius: 24px;
 
@@ -1612,8 +1612,6 @@ rgba(170,90,255,.42) 40%,
     text-align: left;
 
     line-height: 1.8;
-
-    white-space: pre-wrap;
 }
 
 .reading-placeholder {
@@ -1853,7 +1851,7 @@ rgba(170,90,255,.42) 40%,
 
     color: #f7df8a;
 
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 
     text-shadow:
         0 0 15px rgba(247,223,138,.4);
@@ -1868,7 +1866,7 @@ rgba(170,90,255,.42) 40%,
 
     gap: 12px;
 
-    margin-bottom: 25px;
+    margin-bottom: 40px;
 }
 
 .oracle-cards div {
@@ -1922,4 +1920,12 @@ rgba(170,90,255,.42) 40%,
     font-size: 1rem;
 
     text-align: left;
+
+    white-space: pre-wrap;
 }
+
+.oracle-cards {
+
+    margin-bottom: 40px;
+}
+
