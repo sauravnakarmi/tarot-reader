@@ -539,7 +539,28 @@ document
 drawBtn.addEventListener("click", drawCards);
 
 function drawCards() {
-    currentTypingSession++;
+        currentTypingSession++;
+        
+    aiReading.innerHTML = `
+<div class="reading-placeholder">
+
+    ✦ THE ORACLE AWAITS ✦
+
+    <br><br>
+
+    Draw your cards and click
+
+    <br>
+
+    Consult the Oracle
+
+    <br>
+
+    to reveal your fate.
+
+</div>
+`;
+
     cardContainer.innerHTML = "";
 const idleDeck =
     document.getElementById(
@@ -778,35 +799,7 @@ setTimeout(() => {
 }, 2600);
 }
 
-currentTypingSession++;
 
-aiReading.style.opacity = "0";
-
-setTimeout(() => {
-
-    aiReading.innerHTML = `
-    <div class="reading-placeholder">
-
-        ✦ THE ORACLE AWAITS ✦
-
-        <br><br>
-
-        Draw your cards and click
-
-        <br>
-
-        Consult the Oracle
-
-        <br>
-
-        to reveal your fate.
-
-    </div>
-    `;
-
-    aiReading.style.opacity = "1";
-
-}, 200);
 
 
 /* ---------- TILT EFFECT ---------- */
