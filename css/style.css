@@ -1829,16 +1829,6 @@ rgba(170,90,255,.42) 40%,
     }
 }
 
-.oracle-dots {
-
-    font-size: 2rem;
-
-    color:
-        rgba(255,255,255,.8);
-
-    min-height: 40px;
-}
-
 .oracle-reading-header {
 
     text-align: center;
@@ -1929,3 +1919,16 @@ rgba(170,90,255,.42) 40%,
     margin-bottom: 40px;
 }
 
+.oracle-status {
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 3px;
+
+    color: #f7df8a;
+
+    animation:
+        oraclePulse 2s ease-in-out infinite;
+
+    min-height: 32px;
+}

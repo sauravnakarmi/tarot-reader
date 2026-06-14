@@ -909,13 +909,6 @@ aiReadingBtn.addEventListener(
         Reading the threads of fate...
     </div>
 
-    <div
-        class="oracle-dots"
-        id="oracleDots"
-    >
-        .
-    </div>
-
 </div>
 `;
 
@@ -953,26 +946,6 @@ setInterval(() => {
 
 }, 1500);
 
-let dotCount = 1;
-
-const dotsInterval =
-setInterval(() => {
-
-    const dots =
-    document.getElementById(
-        "oracleDots"
-    );
-
-    if (!dots) return;
-
-    dotCount =
-        (dotCount % 3) + 1;
-
-    dots.textContent =
-        ".".repeat(dotCount);
-
-}, 500);
-
         const response =
             await fetch(
                 "https://tarot-reader-jdwc.onrender.com/reading",
@@ -998,10 +971,6 @@ setInterval(() => {
         
             clearInterval(
     statusInterval
-);
-
-clearInterval(
-    dotsInterval
 );
 
         aiReading.innerHTML = `
